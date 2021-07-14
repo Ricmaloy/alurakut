@@ -36,7 +36,7 @@ export const BoxContainer = styled.div`
     border-bottom-color: #ECF2FA;
   }
   input {
-    width: 100%;
+    width: 93%;
     background-color: #F4F4F4;
     color: #333333;
     border: 0;
