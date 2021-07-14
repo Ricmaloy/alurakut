@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useComunities } from "../../hooks/useComunities"
+import { useCommunities } from "../../hooks/useComunities"
 
 export const ComunitiesForm = () => {
-    const { handleAddComunity } = useComunities();
+    const { handleAddCommunity } = useCommunities();
     const [comunityName, setComunityName] = useState('');
     const [comunityURL, setComunityURL] = useState('');
 
@@ -33,7 +33,7 @@ export const ComunitiesForm = () => {
             <button 
                 type="button"
                 onClick={() => {
-                    handleAddComunity(comunityName, comunityURL);
+                    handleAddCommunity(comunityName, comunityURL);
                     setComunityName('');
                     setComunityURL('');
                 }}

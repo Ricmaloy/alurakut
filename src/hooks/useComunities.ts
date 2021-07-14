@@ -1,20 +1,20 @@
 import { useContext } from "react";
-import { ComunitiesContext } from "../contexts/ComunityContext";
+import { CommunitiesContext } from "../contexts/ComunityContext";
 
-interface ComunitiesItem {
-    title: string,
-    imageURL: string;
+interface CommunitiesItem {
+  title: string;
+  imageURL: string;
 }
 
-interface ComunitiesContextProps {
-    comunities: ComunitiesItem[];
-    handleAddComunity: (comunityName, comunityURL) => void;
+interface CommunitiesContextProps {
+  communities: CommunitiesItem[];
+  handleAddCommunity: (communityName: string, communityURL: string) => void;
 }
 
-function useComunities(): ComunitiesContextProps {
-    const context = useContext(ComunitiesContext);
+function useCommunities(): CommunitiesContextProps {
+  const context = useContext(CommunitiesContext);
 
-    return context;
+  return context;
 }
 
-export { useComunities }
+export { useCommunities };
