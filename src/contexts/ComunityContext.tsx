@@ -1,35 +1,33 @@
-import { createContext, FormEvent, ReactNode, useState } from "react";
+import { createContext, useState } from "react";
 
 interface CommunitiesItem {
-    title: string,
-    imageURL: string;
+    creatorSlug: string;
+    id: string;
+    imageUrl: string;
+    title: string;
 }
 
 interface CommunitiesContextProps {
     communities: CommunitiesItem[];
-    handleAddCommunity: ( CommunityName: string, CommunityURL: string) => void;
+    handleAddCommunity: ( CommunityName: string, CommunityURL: string,  creatorSlug: string, id: string) => void;
+    setCommunities: ([]) => void;
 }
 
 const CommunitiesContext = createContext<CommunitiesContextProps>({} as CommunitiesContextProps);
 
 const CommunitiesProvider = ({children}) => {
-    const [communities, setCommunities] = useState<CommunitiesItem[]>([
-        {
-            title: 'Eu odeio acordar cedo',
-            imageURL: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'
-        }
-    ]);
+    const [communities, setCommunities] = useState<CommunitiesItem[]>([]);
 
-    function handleAddCommunity(title: string, imageURL: string) {
+    function handleAddCommunity(title: string, imageUrl: string, creatorSlug: string, id: string) {
 
-        setCommunities([...communities, {title, imageURL}]);
+        setCommunities([...communities, {title, imageUrl, creatorSlug, id}]);
 
         console.log(communities);
     }
 
     return (
         <CommunitiesContext.Provider 
-            value={{communities, handleAddCommunity}}
+            value={{communities, setCommunities, handleAddCommunity}}
         >
             {children}
         </CommunitiesContext.Provider>

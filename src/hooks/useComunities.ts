@@ -2,13 +2,16 @@ import { useContext } from "react";
 import { CommunitiesContext } from "../contexts/ComunityContext";
 
 interface CommunitiesItem {
+  creatorSlug: string;
+  id: string;
+  imageUrl: string;
   title: string;
-  imageURL: string;
 }
 
 interface CommunitiesContextProps {
   communities: CommunitiesItem[];
-  handleAddCommunity: (communityName: string, communityURL: string) => void;
+  handleAddCommunity: (creatorSlug: string, id: string, imageUrl: string, title: string,) => void;
+  setCommunities: ([]) => void;
 }
 
 function useCommunities(): CommunitiesContextProps {

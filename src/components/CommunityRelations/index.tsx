@@ -1,15 +1,17 @@
 import { ProfileRelationsBoxWrapper } from "./styles";
 
-interface ProfileItem {
-  name: string;
+interface DataItem {
+  creatorSlug: string;
+  id: string;
+  imageUrl: string;
+  title: string;
 }
-
-interface ProfileRelationsProps {
+interface CommunitylationsProps {
   containerTitle: string,
-  data: ProfileItem[] ,
+  data: DataItem[],
 }
 
-export const ProfileRelations = ({containerTitle, data}: ProfileRelationsProps) => {
+export const CommunityRelations = ({containerTitle, data}: CommunitylationsProps) => {
   return (
     <>
       <ProfileRelationsBoxWrapper>
@@ -21,13 +23,13 @@ export const ProfileRelations = ({containerTitle, data}: ProfileRelationsProps) 
           {data.map((item, index) => {
             if(index < 6) {
               return (
-                  <li key={item.name}>
-                      <a href={`/users/${item.name}`} >
+                  <li key={item.title}>
+                      <a href={`/communities/${item.id}`} >
                           <img 
-                            src={`https://github.com/${item.name}.png`} 
-                            alt={`${item.name}`} 
+                            src={item.imageUrl} 
+                            alt={`Comunidade ${item.title}`} 
                           />
-                          <span>{item.name}</span>title
+                          <span>{item.title}</span>title
                       </a>
                   </li>
               );

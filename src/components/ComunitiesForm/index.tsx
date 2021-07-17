@@ -2,9 +2,32 @@ import { useState } from "react";
 import { useCommunities } from "../../hooks/useComunities"
 
 export const ComunitiesForm = () => {
-    const { handleAddCommunity } = useCommunities();
+    const { communities, setCommunities } = useCommunities();
     const [comunityName, setComunityName] = useState('');
     const [comunityURL, setComunityURL] = useState('');
+
+    function handleCreateDatoCommunity() {
+        const newCommunity = {
+            title: comunityName,
+            imageUrl: comunityURL,
+            creatorSlug: 'ricmaloy'
+        };
+
+        fetch('/api/comunidades', {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newCommunity)
+        }).then(async (response) => {
+            const dados = await response.json();
+            const comunidade = dados.registro;
+            setCommunities([...communities, comunidade]);
+            setComunityName('');
+            setComunityURL('');
+        });
+
+    }
 
     return (
         <>
@@ -32,11 +55,7 @@ export const ComunitiesForm = () => {
             </div>
             <button 
                 type="button"
-                onClick={() => {
-                    handleAddCommunity(comunityName, comunityURL);
-                    setComunityName('');
-                    setComunityURL('');
-                }}
+                onClick={handleCreateDatoCommunity}
             >
                 Criar comunidade
             </button>
