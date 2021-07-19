@@ -8,7 +8,7 @@ import { UsersList } from "../../components/UsersList";
 import { MidRightContainer } from "../../components/MidRightContainer";
 import { GetServerSideProps } from "next";
 
-export default function users({githubUser, userFriends}) {
+export default function Users({githubUser, userFriends}) {
     return (
         <>
             <AlurakutMenu githubUser={githubUser} />

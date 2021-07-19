@@ -10,7 +10,7 @@ import { Box } from '../../components/Box'
 
 import { SocialContainer, Title, SubTitle } from './styles';
 
-export default function user({user, userFriends}) {
+export default function User({user, userFriends}) {
     return (
         <>
             <AlurakutMenu githubUser={user.username} />
