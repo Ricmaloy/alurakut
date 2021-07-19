@@ -1,6 +1,6 @@
 import { ThemeProvider } from "styled-components";
-import { CommunitiesProvider } from "../src/contexts/ComunityContext";
-import { GlobalStyle, theme } from "../src/styles/GlobalStyles";
+import { CommunitiesProvider } from "../contexts/ComunityContext";
+import { GlobalStyle, theme } from "../styles/GlobalStyles";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 

@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { GetServerSideProps } from "next";
-import { CommunityRelations } from "../src/components/CommunityRelations";
-import { Layout } from "../src/components/Layout";
-import { LeftContainer } from "../src/components/LeftContainer";
-import { MidContainer } from "../src/components/MidContainer";
-import { ProfileRelations } from "../src/components/ProfileRelations";
-import { ProfileSidebar } from "../src/components/ProfileSideBar";
-import { RightContainer } from "../src/components/RightContainer";
-import { WelcomeArea } from "../src/components/WelcomeArea";
-import { useCommunities } from "../src/hooks/useComunities";
-import { AlurakutMenu } from "../src/lib/AlurakutCommons";
+import { CommunityRelations } from "../components/CommunityRelations";
+import { Layout } from "../components/Layout";
+import { LeftContainer } from "../components/LeftContainer";
+import { MidContainer } from "../components/MidContainer";
+import { ProfileRelations } from "../components/ProfileRelations";
+import { ProfileSidebar } from "../components/ProfileSideBar";
+import { RightContainer } from "../components/RightContainer";
+import { WelcomeArea } from "../components/WelcomeArea";
+import { useCommunities } from "../hooks/useComunities";
+import { AlurakutMenu } from "../lib/AlurakutCommons";
 import nookies from "nookies";
 import jwt from "jsonwebtoken";
 
