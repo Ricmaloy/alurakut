@@ -6,6 +6,9 @@ import { ProfileRelations } from "../../components/ProfileRelations";
 import { ProfileSidebar } from "../../components/ProfileSideBar";
 import { RightContainer } from "../../components/RightContainer";
 import { AlurakutMenu } from "../../lib/AlurakutCommons";
+import { Box } from '../../components/Box'
+
+import { SocialContainer, Title, SubTitle } from './styles';
 
 export default function User({user, userFriends}) {
     return (
@@ -16,7 +19,23 @@ export default function User({user, userFriends}) {
                     <ProfileSidebar githubUserURL={user.username} />
                 </LeftContainer>
                 <MidContainer>
-
+                    <Box>
+                        <Title>{user.fullName}</Title>
+                        <SubTitle>{user.location}</SubTitle>
+                        <SocialContainer>
+                            <div>
+                                <p className="subTitle" >Seguindo</p>
+                                <span>{user.following}</span>
+                            </div>
+                            <div>
+                                <p className="subTitle">Seguidores</p>
+                                <span>{user.followers}</span>
+                            </div>
+                        </SocialContainer>
+                        <hr />
+                        <p>{user.bio}</p>
+                        <span><a href={`https://github.com/${user.username}`}>Visitar {user.username}</a></span>
+                    </Box>
                 </MidContainer>
                 <RightContainer>
                     <ProfileRelations

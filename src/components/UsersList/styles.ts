@@ -26,4 +26,6 @@ export const UserPhoto = styled.img`
     border-radius: 50%;
 `;
 
-export const UserName = styled.span``;
+export const UserName = styled.a`
+    cursor: pointer;
+`;

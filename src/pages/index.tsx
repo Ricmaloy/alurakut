@@ -99,8 +99,7 @@ export async function getServerSideProps(context) {
     return {
       name: friendData.login
     }
-  });
-  
+  })
 
   return {
     props: {

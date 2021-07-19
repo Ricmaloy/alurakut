@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Box } from "../Box";
 
 import {
@@ -20,7 +21,7 @@ export function UsersList({ usersList }) {
               <ListItem key={user.name}>
                 <UserContainer>
                   <UserPhoto src={user.avatar} alt="Foto do usuário" />
-                  <a href={`https://github.com/${user.name}`}><UserName>{user.name}</UserName></a>
+                  <Link href={`users/${user.name}`}><UserName>{user.name}</UserName></Link>
                 </UserContainer>
               </ListItem>
             );
