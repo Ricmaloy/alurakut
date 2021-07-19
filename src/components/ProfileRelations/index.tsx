@@ -23,18 +23,15 @@ export const ProfileRelations = ({containerTitle, data}: ProfileRelationsProps) 
             if(index < 6) {
               return (
                   <li key={item.name}>
-                    <Link href={`/users/${item.name}`}>
-                      <a href={`/users/${item.name}`} >
-                        <>
+                      <Link href={`/users/${item.name}`}>
+                        <a href={`/users/${item.name}`}>
                           <img 
                             src={`https://github.com/${item.name}.png`} 
                             alt={`${item.name}`} 
                           />
-                          <span>{item.name}</span>title
-                          </>
-                      </a>
-                    </Link>
-
+                          <span>{item.name}</span>  
+                        </a>
+                      </Link>
                   </li>
               );
             }

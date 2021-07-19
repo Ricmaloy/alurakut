@@ -5,6 +5,8 @@ import { MidContainer } from "../../components/MidContainer";
 import { ProfileRelations } from "../../components/ProfileRelations";
 import { ProfileSidebar } from "../../components/ProfileSideBar";
 import { RightContainer } from "../../components/RightContainer";
+import nookies from "nookies";
+import jwt from "jsonwebtoken";
 import { AlurakutMenu, OrkutNostalgicIconSet } from "../../lib/AlurakutCommons";
 import { Box } from '../../components/Box'
 
@@ -22,7 +24,6 @@ export default function user ({user, userFriends}) {
                     <Box>
                         <Title>{user.fullName}</Title>
                         <SubTitle>{user.location}</SubTitle>
-                        <OrkutNostalgicIconSet />
                         <SocialContainer>
                             <div>
                                 <p className="subTitle" >Seguindo</p>
@@ -33,6 +34,7 @@ export default function user ({user, userFriends}) {
                                 <span>{user.followers}</span>
                             </div>
                         </SocialContainer>
+                        <OrkutNostalgicIconSet />
                         <hr />
                         <p>{user.bio}</p>
                         <span><a href={`https://github.com/${user.username}`}>Visitar {user.username}</a></span>
@@ -49,9 +51,28 @@ export default function user ({user, userFriends}) {
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({params}) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const token = nookies.get(context).USER_TOKEN;
 
-    const { slug } = params;
+    const auth = await fetch('https://alurakut.vercel.app/api/auth', {
+      headers: {
+          Authorization: token
+        }
+    })
+    .then((resposta) => resposta.json());
+  
+    const { isAuthenticated } = auth;
+  
+    if(!isAuthenticated) {
+      return {
+        redirect: {
+          destination: '/login',
+          permanent: false,
+        }
+      }
+    }
+
+    const { slug } = context.params;
 
     const userData = await fetch(`https://api.github.com/users/${slug}`).then((response) => response.json());
 
