@@ -1,12 +1,12 @@
 import { GetServerSideProps } from "next"
-import { Layout } from "../../components/Layout";
-import { LeftContainer } from "../../components/LeftContainer";
-import { MidContainer } from "../../components/MidContainer";
-import { ProfileRelations } from "../../components/ProfileRelations";
-import { ProfileSidebar } from "../../components/ProfileSideBar";
-import { RightContainer } from "../../components/RightContainer";
-import { AlurakutMenu } from "../../lib/AlurakutCommons";
-import { Box } from '../../components/Box'
+import { Layout } from "../../src/components/Layout";
+import { LeftContainer } from "../../src/components/LeftContainer";
+import { MidContainer } from "../../src/components/MidContainer";
+import { ProfileRelations } from "../../src/components/ProfileRelations";
+import { ProfileSidebar } from "../../src/components/ProfileSideBar";
+import { RightContainer } from "../../src/components/RightContainer";
+import { AlurakutMenu } from "../../src/lib/AlurakutCommons";
+import { Box } from '../../src/components/Box'
 
 import { SocialContainer, Title, SubTitle } from './styles';
 

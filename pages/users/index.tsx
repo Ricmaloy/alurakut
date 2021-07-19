@@ -1,11 +1,11 @@
 import nookies from "nookies";
 import jwt from "jsonwebtoken";
-import { AlurakutMenu } from "../../lib/AlurakutCommons";
-import { LeftContainer } from "../../components/LeftContainer";
-import { ProfileSidebar } from "../../components/ProfileSideBar";
-import { Layout } from "../../components/Layout";
-import { UsersList } from "../../components/UsersList";
-import { MidRightContainer } from "../../components/MidRightContainer";
+import { AlurakutMenu } from "../../src/lib/AlurakutCommons";
+import { LeftContainer } from "../../src/components/LeftContainer";
+import { ProfileSidebar } from "../../src/components/ProfileSideBar";
+import { Layout } from "../../src/components/Layout";
+import { UsersList } from "../../src/components/UsersList";
+import { MidRightContainer } from "../../src/components/MidRightContainer";
 import { GetServerSideProps } from "next";
 
 export default function Users({githubUser, userFriends}) {
