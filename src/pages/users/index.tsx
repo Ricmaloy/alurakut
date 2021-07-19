@@ -6,6 +6,7 @@ import { ProfileSidebar } from "../../components/ProfileSideBar";
 import { Layout } from "../../components/Layout";
 import { UsersList } from "../../components/UsersList";
 import { MidRightContainer } from "../../components/MidRightContainer";
+import { GetServerSideProps } from "next";
 
 export default function users({githubUser, userFriends}) {
     return (
@@ -23,7 +24,7 @@ export default function users({githubUser, userFriends}) {
     )
 }
 
-export async function getServerSideProps(context) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
     const token = nookies.get(context).USER_TOKEN;
 
     const auth = await fetch('https://alurakut.vercel.app/api/auth', {

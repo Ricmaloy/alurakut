@@ -16,7 +16,9 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Rubik', sans-serif;
-    background-color: #D9E6F6;
+
+    background-color: #212121;
+    background-image: url('https://data.whicdn.com/images/290733198/original.gif');
   }
 
   #__next {

@@ -17,3 +17,6 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+
+// https://data.whicdn.com/images/290733198/original.gif
+// #212121
