@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { GetServerSideProps } from "next";
 import { CommunityRelations } from "../components/CommunityRelations";
 import { Layout } from "../components/Layout";
 import { LeftContainer } from "../components/LeftContainer";
@@ -11,7 +12,6 @@ import { useCommunities } from "../hooks/useComunities";
 import { AlurakutMenu } from "../lib/AlurakutCommons";
 import nookies from "nookies";
 import jwt from "jsonwebtoken";
-import { GetServerSideProps } from "next";
 
 export default function Home({ githubUser, firstName, userFriends }) {
 
