@@ -11,6 +11,7 @@ import { useCommunities } from "../hooks/useComunities";
 import { AlurakutMenu } from "../lib/AlurakutCommons";
 import nookies from "nookies";
 import jwt from "jsonwebtoken";
+import { GetServerSideProps } from "next";
 
 export default function Home({ githubUser, firstName, userFriends }) {
 
@@ -67,7 +68,7 @@ export default function Home({ githubUser, firstName, userFriends }) {
   );
 }
 
-export async function getServerSideProps(context) {
+  export const getServerSideProps: GetServerSideProps = async (context) => {
   const token = nookies.get(context).USER_TOKEN;
 
   const auth = await fetch('https://alurakut.vercel.app/api/auth', {
