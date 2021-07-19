@@ -12,18 +12,10 @@ import { AlurakutMenu } from "../lib/AlurakutCommons";
 import nookies from "nookies";
 import jwt from "jsonwebtoken";
 
-export default function Home({ githubUser }) {
-  const user = githubUser;
+export default function Home({ githubUser, firstName, userFriends }) {
+
   const { communities, setCommunities } = useCommunities();
-  const pessoasFavoritas = [
-    { name: "juunegreiros" },
-    { name: "omariosouto" },
-    { name: "peas" },
-    { name: "rafaballerini" },
-    { name: "marcobrunodev" },
-    { name: "felipefialho" },
-    { name: "rodrigozamb" },
-  ];
+  const user = githubUser;
 
   useEffect(() => {
     fetch("https://graphql.datocms.com/", {
@@ -60,14 +52,14 @@ export default function Home({ githubUser }) {
         </LeftContainer>
 
         <MidContainer>
-          <WelcomeArea name={user} />
+          <WelcomeArea name={firstName} />
         </MidContainer>
 
         <RightContainer>
           <CommunityRelations containerTitle="Comunidades" data={communities} />
           <ProfileRelations
             containerTitle="Meus amigos"
-            data={pessoasFavoritas}
+            data={userFriends}
           />
         </RightContainer>
       </Layout>
@@ -83,7 +75,7 @@ export async function getServerSideProps(context) {
         Authorization: token
       }
   })
-  .then((resposta) => resposta.json())
+  .then((resposta) => resposta.json());
 
   const { isAuthenticated } = auth;
 
@@ -98,9 +90,23 @@ export async function getServerSideProps(context) {
 
   const { githubUser } = jwt.decode(token);
 
+  const userData = await fetch(`https://api.github.com/users/${githubUser}`).then( (response) => response.json() );
+  const fullName = userData.name.split(' ');
+
+  const userFollowers = await fetch(`https://api.github.com/users/${githubUser}/following`).then( (response) => response.json() );
+
+  const userFriends = userFollowers.map(friendData => {
+    return {
+      name: friendData.login
+    }
+  });
+  
+
   return {
     props: {
       githubUser,
+      firstName: fullName[0],
+      userFriends
     },
   };
 }

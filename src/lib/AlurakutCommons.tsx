@@ -27,8 +27,8 @@ export function AlurakutMenu({ githubUser }) {
         <nav style={{ flex: 1 }}>
           {[
             { name: "Inicio", slug: "/" },
-            { name: "Amigos", slug: "/amigos" },
-            { name: "Comunidades", slug: "/comunidades" },
+            { name: "Amigos", slug: "/users" },
+            { name: "Comunidades", slug: "/communities" },
           ].map((menuItem) => (
             <Link
               key={`key__${menuItem.name.toLocaleLowerCase()}`}

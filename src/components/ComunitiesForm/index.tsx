@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { useCommunities } from "../../hooks/useComunities"
 
 export const ComunitiesForm = () => {
@@ -7,6 +8,11 @@ export const ComunitiesForm = () => {
     const [comunityURL, setComunityURL] = useState('');
 
     function handleCreateDatoCommunity() {
+        if(comunityName.trim() === '' || comunityURL.trim() === '') {
+            toast.error('❌ Campos inválidos !');
+            return;
+        }
+
         const newCommunity = {
             title: comunityName,
             imageUrl: comunityURL,
@@ -27,6 +33,7 @@ export const ComunitiesForm = () => {
             setComunityURL('');
         });
 
+        toast('🦄 Comunidade criada!');
     }
 
     return (

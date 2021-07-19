@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ProfileRelationsBoxWrapper } from "./styles";
 
 interface ProfileItem {
@@ -35,7 +36,7 @@ export const ProfileRelations = ({containerTitle, data}: ProfileRelationsProps) 
           })}
         </ul>
         {data.length >= 7 && (
-          <a className="boxLink" href="/">Ver mais</a>
+          <Link  href="/users">Ver mais</Link>
         )}
       </ProfileRelationsBoxWrapper>
     </>
