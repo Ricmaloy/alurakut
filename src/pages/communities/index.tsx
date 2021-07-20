@@ -4,16 +4,16 @@ import { AlurakutMenu } from "../../lib/AlurakutCommons";
 import { LeftContainer } from "../../components/LeftContainer";
 import { ProfileSidebar } from "../../components/ProfileSideBar";
 import { Layout } from "../../components/Layout";
-import { UsersList } from "../../components/UsersList";
 import { MidRightContainer } from "../../components/MidRightContainer";
 import { GetServerSideProps } from "next";
-import Head from "next/head";
+import Head from 'next/head';
+import { CommunitiesList } from "../../components/CommunitiesList";
 
-export default function users ({githubUser, userFriends}) {
+export default function communities ({githubUser, communities}) {
     return (
         <>
             <Head>
-              <title>Amigos(as) | Alurakut</title>
+              <title>Comunidades | Alurakut</title>
             </Head>
             <AlurakutMenu githubUser={githubUser} />
             <Layout>
@@ -21,7 +21,7 @@ export default function users ({githubUser, userFriends}) {
                     <ProfileSidebar githubUserURL={githubUser} />
                 </LeftContainer>
                 <MidRightContainer>
-                    <UsersList usersList={userFriends} />
+                    <CommunitiesList communitiesList={communities.data.allCommunities} />
                 </MidRightContainer>
             </Layout>
         </>
@@ -51,19 +51,31 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   
     const { githubUser } = jwt.decode(token);
 
-    const userFollowersData = await fetch(`https://api.github.com/users/${githubUser}/following`).then( (response) => response.json() );
+    let com;
 
-    const userFriends = userFollowersData.map(friendData => {
-        return {
-            name: friendData.login,
-            avatar: friendData.avatar_url
-        }
-    })
-    
+    await fetch("https://graphql.datocms.com/", {
+        method: "POST",
+        headers: {
+          Authorization: "ae0858d6fc0e28873bbc98d9a2398e",
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          query: `query {
+          allCommunities {
+            id 
+            title
+            imageUrl
+          }
+        }`,
+        }),
+      }).then((response) => response.json())
+        .then(res => com = res)
+
     return {
         props: {
           githubUser,
-          userFriends
+          communities: com
         },
     };
 }

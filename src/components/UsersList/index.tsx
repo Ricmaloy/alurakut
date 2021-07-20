@@ -21,7 +21,11 @@ export function UsersList({ usersList }) {
               <ListItem key={user.name}>
                 <UserContainer>
                   <UserPhoto src={user.avatar} alt="Foto do usuário" />
-                  <Link href={`users/${user.name}`}><UserName>{user.name}</UserName></Link>
+                  <Link href={`users/${user.name}`}>
+                    <a href={`users/${user.name}`}>
+                      <UserName>{user.name}</UserName>
+                    </a>
+                  </Link>
                 </UserContainer>
               </ListItem>
             );

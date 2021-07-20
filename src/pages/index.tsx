@@ -12,6 +12,7 @@ import { useCommunities } from "../hooks/useComunities";
 import { AlurakutMenu } from "../lib/AlurakutCommons";
 import nookies from "nookies";
 import jwt from "jsonwebtoken";
+import Head from "next/head";
 
 export default function Home({ githubUser, firstName, userFriends }) {
 
@@ -41,11 +42,16 @@ export default function Home({ githubUser, firstName, userFriends }) {
       .then((respostaCompleta) => {
         const comunidadesVindasDoDato = respostaCompleta.data.allCommunities;
         setCommunities(comunidadesVindasDoDato);
+        console.log(comunidadesVindasDoDato)
       });
   }, []);
 
+
   return (
     <>
+      <Head>
+        <title>Início | Alurakut</title>
+      </Head>
       <AlurakutMenu githubUser={user} />
       <Layout>
         <LeftContainer>

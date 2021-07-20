@@ -11,10 +11,14 @@ import { AlurakutMenu, OrkutNostalgicIconSet } from "../../lib/AlurakutCommons";
 import { Box } from '../../components/Box'
 
 import { SocialContainer, Title, SubTitle } from '../../styles/styles';
+import Head from "next/head";
 
 export default function user ({user, userFriends}) {
     return (
         <>
+            <Head>
+              <title>{user.username} | Alurakut</title>
+            </Head>
             <AlurakutMenu githubUser={user.username} />
             <Layout>
                 <LeftContainer>

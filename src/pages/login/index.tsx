@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import nookies from 'nookies';
+import Head from 'next/head';
 
 export default function login() {
     const router = useRouter();
@@ -35,6 +36,9 @@ export default function login() {
   return (
     <main style={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <div className="loginScreen">
+      <Head>
+        <title>Login | Alurakut</title>
+      </Head>
         <section className="logoArea">
           <img src="https://alurakut.vercel.app/logo.svg" />
 
