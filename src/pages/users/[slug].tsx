@@ -10,7 +10,7 @@ import jwt from "jsonwebtoken";
 import { AlurakutMenu, OrkutNostalgicIconSet } from "../../lib/AlurakutCommons";
 import { Box } from '../../components/Box'
 
-import { SocialContainer, Title, SubTitle } from './styles';
+import { SocialContainer, Title, SubTitle } from '../../styles/styles';
 
 export default function user ({user, userFriends}) {
     return (
