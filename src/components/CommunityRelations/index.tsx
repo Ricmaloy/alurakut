@@ -25,13 +25,15 @@ export const CommunityRelations = ({containerTitle, data}: CommunitylationsProps
             if(index < 6) {
               return (
                   <li key={item.title}>
-                      <a href={`/communities/${item.id}`} >
+                      <Link href={`/communities/${item.id}`} >
+                        <a href={`/communities/${item.id}`}>
                           <img 
                             src={item.imageUrl} 
                             alt={`Comunidade ${item.title}`} 
                           />
                           <span>{item.title}</span>title
-                      </a>
+                        </a>
+                      </Link>
                   </li>
               );
             }
